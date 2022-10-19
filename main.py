@@ -7,10 +7,10 @@ from discord.ext import commands
 
 class main:
     def __init__(self):
-        pass
+        self.token =
 
     def load_cogs(self):
-        bot.load_extension("cogs.hello_world")
+        bot.load_extension("src.cogs.hello_world")
 
     def run(self):
         self.load_cogs()
