@@ -34,6 +34,8 @@ class main:
     def load_cogs(self):
         bot.load_extension("src.cogs.hello_world")
 
+        bot.load_extension("src.cogs.on_member_update")
+
     def run(self):
         self.load_cogs()
         bot.run(self.token)
