@@ -2,6 +2,7 @@ import discord
 
 from discord.ext import commands
 
+
 class hello_world(commands.Cog):
     def __init__(self, bot):
         self.bot = bot

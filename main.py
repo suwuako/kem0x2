@@ -1,14 +1,16 @@
 import asyncio
 import discord
+import datetime
 
 import src.cogs as cogs
 
 from src.lib import json_methods
+from src.lib import logging
 from discord.ext import commands
 
 class main:
     def __init__(self):
-        secret = json_methods.read_json(r"json/secret.json")
+        secret = json_methods.read_json(r"data/secret.json")
 
         self.token = secret["token"]
         log_channel_id = secret["log_channel"]
@@ -22,9 +24,12 @@ class main:
                                                                  url='https://www.youtube.com/watch?v=c6VhcpwFZJM'))
 
             await self.log_channel.send("=== Start Log ===")
-            await self.log_channel.send(f"good morning/afternoon/night")
+            await self.log_channel.send(f"Config: \n"
+                                        f"log_channel_id : {log_channel_id} (<#{log_channel_id}>) \n"
+                                        f"alert_list     : {self.alert_list}")
+            await self.log_channel.send(f"{logging.get_timestamp()} Startup complete ")
 
-            print("Online now")
+            print(f"{logging.get_timestamp()} Startup complete ")
 
     def load_cogs(self):
         bot.load_extension("src.cogs.hello_world")
